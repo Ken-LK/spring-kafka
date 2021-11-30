@@ -1,0 +1,14 @@
+server:
+  port: 9090
+spring:
+  kafka:
+    bootstrap-servers: 172.20.0.210:9092,172.20.0.211:9092,172.20.0.212:9092
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      # 重试次数
+      retries: 3
+kafka:
+  topic:
+    my-topic1: my-topic1
+    my-topic2: my-topic2
+    my-topic3: my-topic3
