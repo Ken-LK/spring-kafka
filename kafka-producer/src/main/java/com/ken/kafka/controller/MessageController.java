@@ -35,8 +35,8 @@ public class MessageController {
     public void sendMessageToKafkaTopic(@PathVariable("info") String info) {
         this.producer.sendMsgByPartition(myTopic1,0, new Message(atomicLong.addAndGet(1), info));
 //        this.producer.sendMessage(myTopic1, new Message(atomicLong.addAndGet(1), info));
-//        this.producer.sendMessage(myTopic2, new Message(atomicLong.addAndGet(1), info));
-//        this.producer.sendMessage(myTopic3, new Message(atomicLong.addAndGet(1), info));
+        this.producer.sendMessage(myTopic2, new Message(atomicLong.addAndGet(1), info));
+        this.producer.sendMessage(myTopic3, new Message(atomicLong.addAndGet(1), info));
     }
 
 

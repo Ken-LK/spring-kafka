@@ -1,0 +1,20 @@
+server:
+  port: 9093
+
+spring:
+  kafka:
+    bootstrap-servers: 172.20.0.210:9092,172.20.0.211:9092,172.20.0.212:9092
+    consumer:
+      # 配置消费者消息offset是否自动重置(消费者重连会能够接收最开始的消息)
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+  cloud:
+    function:
+      definition: process2 # #指定消费的方法名 多个用分号分隔 consumer1;consumer2
+    stream:
+      bindings:
+        process2-in-0: # 消费者命名规范 消费者方法名-in-0
+          destination: my-topic1,my-topic2,my-topic3 #topic
+          backOffInitialInterval: 100000 # 重试时初始避退间隔，单位毫秒，默认1000
+        process2-out-0: # 生产者命名规范 生产者名-out-0
+            destination: my-topic4

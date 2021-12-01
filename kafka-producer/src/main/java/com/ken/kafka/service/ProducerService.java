@@ -28,8 +28,7 @@ public class ProducerService {
         future.addCallback(result -> logger.info("生产者成功发送消息到topic:{} partition:{}的消息",
                         result.getRecordMetadata().topic(),
                         result.getRecordMetadata().partition()),
-                        ex -> logger.error("生产者发送消失败，原因：{}",
-                                ex.getMessage()));
+                        ex -> logger.error("生产者发送消失败，原因：{}", ex.getMessage()));
 
     }
 
